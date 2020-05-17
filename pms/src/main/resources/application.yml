@@ -1,0 +1,11 @@
+server:
+  port: 9527
+#spring
+spring:
+  datasource:
+    driver-class-name: org.sqlite.JDBC
+    url: jdbc:sqlite::resource:\static\sqlite\pms
+    username: 1
+    password: 1
+mybatis:
+  mapperLocations: classpath:mapper/**/*.xml

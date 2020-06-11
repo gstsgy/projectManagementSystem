@@ -2,10 +2,24 @@ server:
   port: 9527
 #spring
 spring:
+
+  resources:
+    static-locations: classpath:/static/,classpath:/views/,file:${web.upload},file:${web.ueditorUpload}
+  servlet:
+    multipart:
+      max-file-size : 100MB
+      max-request-size: 101MB
   datasource:
     driver-class-name: org.sqlite.JDBC
-    url: jdbc:sqlite::resource:\static\sqlite\pms
+    #url: jdbc:sqlite::resource:static/sqlite/pms
+    url: jdbc:sqlite:T:\project\java\projectManagementSystem\pms\src\main\resources\static\sqlite\pms
     username: 1
     password: 1
 mybatis:
-  mapperLocations: classpath:mapper/**/*.xml
+  mapperLocations: classpath:mapper/*.xml
+  mapper-locations: classpath:mapper/*.xml
+password: 123456
+pagehelper:
+  helper-dialect: sqlite
+ftype: 审核记录,附图附件,现场照片,公参记录,监测报告,报告文档,相关技术资料
+filePath: T:\project\java\projectManagementSystem\filesystem\

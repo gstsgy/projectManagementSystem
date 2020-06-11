@@ -1,0 +1,358 @@
+/*
+.outter-container {
+  height: 36px;
+  overflow: hidden;
+  .inner-container {
+    animation: myMove 5s linear infinite;
+    animation-fill-mode: forwards;
+  }
+}
+
+!*文字无缝滚动*!
+@keyframes myMove {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-75px);
+  }
+  100% {
+    transform: translateY(-150px);
+  }
+}
+
+.slide-enter-active, .slide-leave-active {
+  transition: all 0.5s linear;
+}
+
+.slide-leave-to {
+  transform: translateY(-20px);
+}
+
+.slide-enter {
+  transform: translateY(20px);
+}
+
+
+
+
+.syspermis {
+  display: inline-block;
+  width: 24px;
+  height: 20px;
+}
+
+.report {
+  display: inline-block;
+  width: 24px;
+  height: 20px;
+}
+
+
+
+
+
+.basicinfo {
+  display: inline-block;
+  width: 24px;
+  height: 20px;
+}
+
+
+
+
+.innermanage {
+  display: inline-block;
+  width: 24px;
+  height: 20px;
+}
+
+.dugmanage {
+  display: inline-block;
+  width: 22px;
+  height: 20px;
+}
+
+
+.quality {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+}
+
+
+
+
+
+
+.outmanage {
+  display: inline-block;
+  width: 24px;
+  height: 20px;
+}
+
+
+
+
+.panmanage {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+}
+
+
+
+
+.removemanage {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+}
+
+
+
+
+.stockmanage {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+}
+
+
+
+
+.sysmanage {
+  display: inline-block;
+  width: 20px;
+  height: 24px;
+}
+
+
+
+.setmanage {
+  display: inline-block;
+  width: 20px;
+  height: 24px;
+}
+
+.full-screen {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.menuTop {
+  display: flex;
+  height: 86px;
+}
+
+.topLeft {
+  width: 210px;
+  font-family: "AriaIMT";
+  background: linear-gradient(to right, #333 50%, #112f5a);;
+  display: -webkit-box;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  color: #fff;
+  i {
+    display: inline-block;
+    // width: 215px;
+    // height: 80px;
+    width: 200px;
+    height: 90px;
+    background: url('../assets/img/logo.png') no-repeat center center;
+    // margin-right: 2px;
+    margin-left: 2px;
+  }
+  .worldwide {
+    color: #2258aa;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    line-height: 10px;
+    .eng {
+      font-family: 'Arial-BoldMT';
+      font-size: 10px;
+      font-weight: bold;
+      .group {
+        font-weight: normal;
+        font-family: 'MicrosoftYaHeiLight';
+        color: #ed6053;
+      }
+    }
+    .chs {
+      font-size: 10px;
+      margin-top: 4px;
+    }
+  }
+}
+
+
+.topRight_blue {
+  background: url('../assets/img/head_blue.jpg') no-repeat center center;
+}
+
+.topRight {
+  flex: 1;
+  background-color: blue;
+  padding: 30px 30px 30px 40px;
+  color: #fff;
+  font-size: 24px;
+  font-family: "Microsoft YaHei";
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .userInfo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .userName {
+      margin-left: 16px;
+      margin-right: 36px;
+      font-size: 20px;
+    }
+    .icon {
+      display: inline-block;
+      width: 64px;
+      height: 61px;
+      background: url('../assets/img/switch_closebtn.png') no-repeat center center;
+      cursor: pointer;
+    }
+    .icon:hover {
+      background: url('../assets/img/switch_openbtn.png') no-repeat center center;
+    }
+  }
+}
+
+.menuBottom {
+  position: fixed;
+  top: 86px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+}
+
+.bottomLeft {
+  background-color: rgb(42, 42, 42);
+  width: 210px;
+  position: fixed;
+  top: 86px;
+  bottom: 0;
+  left: 0;
+  right: 210px;
+  overflow-y: scroll;
+  // overflow: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.bottomLeft_blue {
+  .ivu-menu-dark.ivu-menu-vertical .ivu-menu-item-active:not(.ivu-menu-submenu), .ivu-menu-dark.ivu-menu-vertical .ivu-menu-submenu-title-active:not(.ivu-menu-submenu) {
+    color: #fff;
+    background-color: rgb(85, 167, 253) !important;
+  }
+  .ivu-menu-dark.ivu-menu-vertical .ivu-menu-submenu .ivu-menu-item-active, .ivu-menu-dark.ivu-menu-vertical .ivu-menu-submenu .ivu-menu-item-active:hover {
+    font-family: "Microsoft YaHei";
+    font-size: 14px;
+  }
+}
+
+.bottomLeft_yellow {
+  .ivu-menu-dark.ivu-menu-vertical .ivu-menu-item-active:not(.ivu-menu-submenu), .ivu-menu-dark.ivu-menu-vertical .ivu-menu-submenu-title-active:not(.ivu-menu-submenu) {
+    color: #fff;
+    background-color: rgb(233, 156, 45) !important;
+  }
+  .ivu-menu-dark.ivu-menu-vertical .ivu-menu-submenu .ivu-menu-item-active, .ivu-menu-dark.ivu-menu-vertical .ivu-menu-submenu .ivu-menu-item-active:hover {
+    font-family: "Microsoft YaHei";
+    font-size: 14px;
+  }
+}
+
+.bottomLeft_purple {
+  .ivu-menu-dark.ivu-menu-vertical .ivu-menu-item-active:not(.ivu-menu-submenu), .ivu-menu-dark.ivu-menu-vertical .ivu-menu-submenu-title-active:not(.ivu-menu-submenu) {
+    color: #fff;
+    background-color: rgb(75, 72, 237) !important;
+  }
+  .ivu-menu-dark.ivu-menu-vertical .ivu-menu-submenu .ivu-menu-item-active, .ivu-menu-dark.ivu-menu-vertical .ivu-menu-submenu .ivu-menu-item-active:hover {
+    font-family: "Microsoft YaHei";
+    font-size: 14px;
+  }
+}
+
+.bottomLeft_pink {
+  .ivu-menu-dark.ivu-menu-vertical .ivu-menu-item-active:not(.ivu-menu-submenu), .ivu-menu-dark.ivu-menu-vertical .ivu-menu-submenu-title-active:not(.ivu-menu-submenu) {
+    color: #fff;
+    background-color: rgb(250, 83, 189) !important;
+  }
+  .ivu-menu-dark.ivu-menu-vertical .ivu-menu-submenu .ivu-menu-item-active, .ivu-menu-dark.ivu-menu-vertical .ivu-menu-submenu .ivu-menu-item-active:hover {
+    font-family: "Microsoft YaHei";
+    font-size: 14px;
+  }
+}
+
+.bottomLeft_red {
+  .ivu-menu-dark.ivu-menu-vertical .ivu-menu-item-active:not(.ivu-menu-submenu), .ivu-menu-dark.ivu-menu-vertical .ivu-menu-submenu-title-active:not(.ivu-menu-submenu) {
+    color: #fff;
+    background-color: rgb(253, 97, 99) !important;
+  }
+  .ivu-menu-dark.ivu-menu-vertical .ivu-menu-submenu .ivu-menu-item-active, .ivu-menu-dark.ivu-menu-vertical .ivu-menu-submenu .ivu-menu-item-active:hover {
+    font-family: "Microsoft YaHei";
+    font-size: 14px;
+  }
+}
+
+.bottomRight {
+  flex: 1;
+}
+
+.innerTop {
+  height: 69px;
+  position: fixed;
+  top: 86px;
+  left: 210px;
+  right: 0px;
+  z-index: 999;
+  line-height: 69px;
+  padding: 0px 20px;
+  font-size: 20px;
+  text-align: left;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  .curlocate {
+    margin-right: 20px;
+    font-size: 16px;
+  }
+}
+
+.innerBottom {
+  position: fixed;
+  top: 155px;
+  bottom: 0;
+  left: 210px;
+  right: 0px;
+  overflow: auto;
+  padding: 0px 20px;
+}
+
+.ivu-menu-dark {
+  background-color: rgb(42, 42, 42);
+}
+
+.ivu-menu-dark.ivu-menu-vertical .ivu-menu-opened {
+  background: rgb(42, 42, 42);
+}
+
+.ivu-menu {
+  font-size: 16px;
+  font-family: "Microsoft YaHei";
+  color: #fff;
+}
+
+body {
+  background-color: rgb(42, 42, 42) !important;
+}*/

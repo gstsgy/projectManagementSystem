@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.guyue.pms.mapper.ProinfoMapper">
+    <select id="query" parameterType="com.guyue.pms.bean.view.SearchProinfo"
+            resultType="com.guyue.pms.bean.view.ProinfoView">
+        select * from proinfo where 1 = 1
+        <if test="compname != null">
+            and [compname] like '%'||#{compname}||'%'
+        </if>
+        <if test="proname != null">
+            and proname like '%'||#{proname}||'%'
+        </if>
+
+        <if test="contact != null">
+            and contact like '%'||#{contact}||'%'
+        </if>
+        <if test="contractno != null">
+            and contractno like '%'||#{contractno}||'%'
+        </if>
+        <if test="registerdateS != null  and registerdateE == null ">
+            and registerdate = #{registerdateS,jdbcType=VARCHAR}
+        </if>
+
+        <if test="registerdateS != null and registerdateE != null ">
+            and registerdate BETWEEN #{registerdateS,jdbcType=VARCHAR} and #{registerdateE,jdbcType=VARCHAR}
+        </if>
+
+
+        <if test="registerdateE != null and  registerdateS == null ">
+            and registerdate <![CDATA[<= ]]> #{registerdateE,jdbcType=VARCHAR}
+        </if>
+        order by registerdate desc
+    </select>
+
+    <select id="queryone" parameterType="java.lang.Long" resultType="com.guyue.pms.bean.db.Proinfo">
+        select * from proinfo where 1 = 1
+        proid = #{proid}
+
+    </select>
+
+    <delete id="delete" parameterType="java.lang.Long">
+        delete from proinfo where proid = #{proid}
+    </delete>
+    <update id="update" parameterType="com.guyue.pms.bean.view.ProinfoView">
+        update proinfo
+        set
+        [compname] = #{compname},
+        [proname] = #{proname},
+        [contact] = #{contact},
+        contractno = #{contractno},
+        registerdate = #{registerdate},
+        remark = #{remark}
+        where proid = #{proid}
+    </update>
+
+    <update id="updateChildren" parameterType="com.guyue.pms.bean.db.Procontent">
+        update Procontent
+        set [ptypeid] = #{ptypeid},
+        [subid] = #{subid},
+        isarrange = #{isarrange},
+        mainpeople = #{mainpeople},
+        preparedby = #{preparedby},
+        newlyflag = #{newlyflag},
+         isfinish = #{isfinish},
+         schedule = #{schedule},
+          remark = #{remark}
+        where id = #{id}
+    </update>
+    <select id="queryByid" parameterType="com.guyue.pms.bean.view.SearchProinfo"
+            resultType="com.guyue.pms.bean.view.ProinfoView">
+        select distinct p1.* from proinfo p1,Procontent p2 where 1 = 1
+        and p1.proid = p2.infoid
+        and ( p2.mainpeople = #{username} or p2.preparedby = #{username} )
+
+        <if test="compname != null">
+            and p1.compname like '%'||#{compname}||'%'
+        </if>
+        <if test="proname != null">
+            and p1.proname like '%'||#{proname}||'%'
+        </if>
+
+        <if test="contact != null">
+            and p1.contact like '%'||#{contact}||'%'
+        </if>
+        <if test="contractno != null">
+            and p1.contractno like '%'||#{contractno}||'%'
+        </if>
+        <if test="registerdateS != null  and registerdateE == null ">
+            and p1.registerdate = #{registerdateS,jdbcType=VARCHAR}
+        </if>
+
+        <if test="registerdateS != null and registerdateE != null ">
+            and p1.registerdate BETWEEN #{registerdateS,jdbcType=VARCHAR} and #{registerdateE,jdbcType=VARCHAR}
+        </if>
+
+
+        <if test="registerdateE != null and  registerdateS == null ">
+            and p1.registerdate <![CDATA[<= ]]> #{registerdateE,jdbcType=VARCHAR}
+        </if>
+        order by registerdate desc
+    </select>
+
+
+    <select id="queryData" parameterType="com.guyue.pms.bean.view.SearchDataView"
+            resultType="com.guyue.pms.bean.view.ExportDataView">
+        select p1.compname,p1.proname,p1.contractno,p1.contact,t1.name ptype,t2.name subtype,
+        p2.mainpeople,p2.preparedby,p2.isfinish,p2.schedule,p2.remark
+        from proinfo p1,Procontent p2,ptype t1,subtype t2 where 1 = 1
+        and p1.proid = p2.infoid
+        and p2.ptypeid = t1.id
+        and p2.subid = t2.subid
+        <if test="compname != null">
+            and p1.compname like '%'||#{compname}||'%'
+        </if>
+        <if test="proname != null">
+            and p1.proname like '%'||#{proname}||'%'
+        </if>
+        <if test="contractno != null">
+            and p1.contractno like '%'||#{contractno}||'%'
+        </if>
+        <if test="registerdateS != null  and registerdateE == null ">
+            and p1.registerdate = #{registerdateS,jdbcType=VARCHAR}
+        </if>
+
+        <if test="registerdateS != null and registerdateE != null ">
+            and p1.registerdate BETWEEN #{registerdateS,jdbcType=VARCHAR} and #{registerdateE,jdbcType=VARCHAR}
+        </if>
+        <if test="registerdateE != null and  registerdateS == null ">
+            and p1.registerdate <![CDATA[<= ]]> #{registerdateE,jdbcType=VARCHAR}
+        </if>
+        <if test="mainpeople != null">
+            and p2.mainpeople like '%'||#{mainpeople}||'%'
+        </if>
+        <if test="preparedby != null">
+            and p2.preparedby like '%'||#{preparedby}||'%'
+        </if>
+        <if test="isarrange != null">
+            and p2.isarrange = #{isarrange}
+        </if>
+
+        <if test="isfinish != null">
+            and p2.isfinish = #{isfinish}
+        </if>
+
+        <if test="ptypeid != null">
+            and p2.ptypeid = #{ptypeid}
+        </if>
+        <if test="subid != null">
+            and p2.subid = #{subid}
+        </if>
+        order by p1.registerdate ,p1.contractno,p2.ptypeid,p2.subid
+    </select>
+
+    <select id="queryDataByUser" parameterType="com.guyue.pms.bean.view.SearchDataView"
+            resultType="com.guyue.pms.bean.view.ExportDataView">
+        select p1.compname,p1.proname,p1.contractno,p1.contact,t1.name ptype,t2.name subtype,
+        p2.mainpeople,p2.preparedby,p2.isfinish,p2.schedule,p2.remark
+        from proinfo p1,Procontent p2,ptype t1,subtype t2 where 1 = 1
+        and  ( p2.mainpeople = #{username} or p2.preparedby = #{username} )
+        and p1.proid = p2.infoid
+        and p2.ptypeid = t1.id
+        and p2.subid = t2.subid
+        <if test="compname != null">
+            and p1.compname like '%'||#{compname}||'%'
+        </if>
+        <if test="proname != null">
+            and p1.proname like '%'||#{proname}||'%'
+        </if>
+        <if test="contractno != null">
+            and p1.contractno like '%'||#{contractno}||'%'
+        </if>
+        <if test="registerdateS != null  and registerdateE == null ">
+            and p1.registerdate = #{registerdateS,jdbcType=VARCHAR}
+        </if>
+
+        <if test="registerdateS != null and registerdateE != null ">
+            and p1.registerdate BETWEEN #{registerdateS,jdbcType=VARCHAR} and #{registerdateE,jdbcType=VARCHAR}
+        </if>
+        <if test="registerdateE != null and  registerdateS == null ">
+            and p1.registerdate <![CDATA[<= ]]> #{registerdateE,jdbcType=VARCHAR}
+        </if>
+        <if test="mainpeople != null">
+            and p2.mainpeople like '%'||#{mainpeople}||'%'
+        </if>
+        <if test="preparedby != null">
+            and p2.preparedby like '%'||#{preparedby}||'%'
+        </if>
+        <if test="isarrange != null">
+            and p2.isarrange = #{isarrange}
+        </if>
+
+        <if test="isfinish != null">
+            and p2.isfinish = #{isfinish}
+        </if>
+
+        <if test="ptypeid != null">
+            and p2.ptypeid = #{ptypeid}
+        </if>
+        <if test="subid != null">
+            and p2.subid = #{subid}
+        </if>
+        order by p1.registerdate ,p1.contractno,p2.ptypeid,p2.subid
+    </select>
+
+
+
+    <update id="updateMoney" parameterType="com.guyue.pms.bean.db.Profinance">
+        update Profinance
+        set
+        sumofmoney = #{sumofmoney},
+        isfinish = #{isfinish},
+        advancecharge = #{advancecharge},
+        isadvancecharge = #{isadvancecharge},
+        isbilling = #{isbilling},
+        billingnum = #{billingnum},
+        finalpayment = #{finalpayment},
+        remark = #{remark}
+        where fid = #{fid}
+    </update>
+
+
+    <select id="queryMoney" parameterType="com.guyue.pms.bean.view.SearchMoneyView"
+            resultType="com.guyue.pms.bean.view.ExportMoney">
+        select p2.fid, p1.compname,p1.proname,p1.contractno,p1.contact,p2.sumofmoney,p2.advancecharge,
+        p2.finalpayment,case p2.isfinish when 1 then '已结算' else '未结算' end finshname,
+        case p2.isbilling when 1 then '已开票' else '未开票' end billName,p2.remark
+        from proinfo p1,Profinance p2 where 1 = 1
+       and p1.proid = p2.infoid
+        <if test="isfinish != null">
+            and p2.isfinish = #{isfinish}
+        </if>
+        <if test="isadvancecharge != null">
+            and p2.isadvancecharge = #{isadvancecharge}
+        </if>
+        <if test="isbilling != null">
+            and p2.isbilling = #{isbilling}
+        </if>
+        <if test="proname != null">
+            and p1.proname like '%'||#{proname}||'%'
+        </if>
+        <if test="compname != null">
+            and p1.compname like '%'||#{compname}||'%'
+        </if>
+        order by p1.registerdate ,p1.contractno
+    </select>
+
+   <select id="queryfile" parameterType="com.guyue.pms.bean.view.SearchFileView" resultType="com.guyue.pms.bean.db.Prodocument">
+      select p3.cid,p3.mid,p3.mname,p2.ptypeid ftype,p3.fsize,p3.fabout,p1.proname path,
+       p1.compname remark,p2.subid remark1
+       from proinfo p1,procontent p2,   prodocument p3 where 1 = 1
+       and p1.proid = p2.infoid
+       and p2.id = p3.cid
+       <if test="proname != null">
+           and p1.proname like '%'||#{proname}||'%'
+       </if>
+       <if test="contractno != null">
+           and p1.contractno like '%'||#{contractno}||'%'
+       </if>
+       <if test="mname != null">
+           and p3.mname like '%'||#{mname}||'%'
+       </if>
+       <if test="ftype != null">
+           and p2.ptypeid = #{ftype}
+       </if>
+       order by p3.uodatetime desc
+
+   </select>
+</mapper>

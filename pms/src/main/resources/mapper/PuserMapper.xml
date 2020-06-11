@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.guyue.pms.mapper.PuserMapper">
+    <update id="update" parameterType="com.guyue.pms.bean.db.Puser">
+        update puser
+        set username = #{username},
+        usersex = #{usersex},
+        userpw = #{userpw},
+        useremail = #{useremail},
+        userroleid = #{userroleid},
+        remark1 = #{remark1}
+        where userid = #{userid}
+    </update>
+
+   <!-- <update id="update" parameterType="com.sr.suray.bean.WeightStandard">
+        update WeightStandard
+        <set>
+          weight = #{weight},
+         updateymd=REPLACE(REPLACE(REPLACE(REPLACE(CONVERT(CHAR(30),GETDATE(),121),'-',''),':',''),'.',''),' ',''),
+        updateId = #{updateId}
+        </set>
+    </update>
+
+
+    <select id="selectCount"  resultType="int">
+        select count(keyId) from weightStandard
+    </select>
+
+    <select id="selectWeight"  resultType="Double">
+        select weight from weightStandard
+    </select>
+
+    <insert id="insert" parameterType="com.sr.suray.bean.WeightStandard" >
+    insert into weightStandard (keyId,weight,insertYmd,insertId,updateYmd,updateId,seq
+    ) values (#{keyId}, #{weight}, #{insertYmd}, #{insertId}, #{updateYmd}, #{updateId},#{seq})
+  </insert>-->
+</mapper>

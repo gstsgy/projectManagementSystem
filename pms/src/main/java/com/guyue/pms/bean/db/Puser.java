@@ -1,12 +1,13 @@
 package com.guyue.pms.bean.db;
 
 public class Puser {
-    private Integer userid;//工号
-    private String username;//姓名
+    private Long userid;//工号
+    private String username;//用户名
     private Integer usersex;//性别
     private String useremail;//邮箱
-    private Integer userroleid;//角色id
+    private Long userroleid;//角色id
     private String remark;//备注
+    // 姓名
     private String remark1;//备用1
     private String remark2;//备用2
     private String remark3;//备用3
@@ -20,11 +21,11 @@ public class Puser {
         this.userpw = userpw;
     }
 
-    public Integer getUserid() {
+    public Long getUserid() {
         return userid;
     }
 
-    public void setUserid(Integer userid) {
+    public void setUserid(Long userid) {
         this.userid = userid;
     }
 
@@ -52,11 +53,11 @@ public class Puser {
         this.useremail = useremail;
     }
 
-    public Integer getUserroleid() {
+    public Long getUserroleid() {
         return userroleid;
     }
 
-    public void setUserroleid(Integer userroleid) {
+    public void setUserroleid(Long userroleid) {
         this.userroleid = userroleid;
     }
 

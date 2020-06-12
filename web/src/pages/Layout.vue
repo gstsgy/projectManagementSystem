@@ -3,8 +3,8 @@
     <Layout>
       <Header>
         <div class="header-item">
-          <div class="column-div"><img src="../assets/img/logo.png" style="height: 50px"></div>
-          <p class="column-div" style="font-size: 24px;font-weight:300;">您好，欢迎使用南京信佣项目管理系统</p>
+          <div class="column-div"><img src="../assets/img/webp.png" style="height: 50px"></div>
+          <p class="column-div" style="font-size: 24px;font-weight:300;">您好，欢迎使用白驼山司徒子侑项目管理系统</p>
           <div class="column-div" style="flex-direction: row">欢迎 {{getName}}<div class="icon" @click="logOut"></div></div>
         </div>
       </Header>

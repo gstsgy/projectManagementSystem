@@ -4,7 +4,7 @@
 <template>
     <div class="container">
         <div class='content'>
-            <div class='header'>南京信佣项目管理系统</div>
+            <div class='header'>白驼山司徒子侑项目管理系统</div>
             <div class='desc'>心中有理想，脚下有力量</div>
             <Form ref="formInline" :model="formInline" :rules="ruleInline">
                 <FormItem prop="user">
@@ -139,6 +139,9 @@
                     if (valid) {
                         if(this.updateModel.newpwd!==this.updateModel.newpwd1){
                             this.$Message.error('两次密码不一致!');
+                            return
+                        } if(this.updateModel.username==="admin"){
+                            this.$Message.error('admin不允许被修改!');
                             return
                         }
 

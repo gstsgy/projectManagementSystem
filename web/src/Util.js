@@ -7,8 +7,8 @@ let instance = adios1.create({
 instance.defaults.timeout = 8000;
 instance.interceptors.request.use(
     config => {
-         config.baseURL = "/pmsabcd/"
-        //  config.baseURL = "http://localhost:9527/"
+           config.baseURL = "/pms11/"
+        // config.baseURL = "http://localhost:9527/"
        /* if(sessionStorage.username){
             config.params={
                 "username": sessionStorage.username,

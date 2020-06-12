@@ -61,6 +61,9 @@ public class PuserServer {
 
     public boolean update2(String username ,String oldpw,String npw){
         //  System.out.println(puser);
+        if(username.equals("admin")){
+            return  false;
+        }
         Puser puser = puserMapper.queryOne(username);
         if(puser.getUserpw().equals(oldpw)){
             puser.setUserpw(npw);
